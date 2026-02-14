@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
+    <title>Typing Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Fixed header that stays at top -->
+        <div class="fixed-header">
+            <header>
+                <h1>⌨️ Typing Test</h1>
+            </header>
+            
+            <!-- Stats bar fixed at top -->
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Time:</span>
+                    <span id="timer" class="stat-value">60s</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">WPM:</span>
+                    <span id="wpm" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Accuracy:</span>
+                    <span id="accuracy" class="stat-value">100%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrollable content area -->
+        <div class="scrollable-content">
+            <input type="text" id="typing-input" class="typing-input" 
+                   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+
+            <div id="passage-display" class="passage" tabindex="-1"></div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <div class="control-group">
+                    <label for="timer-select">Duration:</label>
+                    <select id="timer-select">
+                        <option value="15">15 sec</option>
+                        <option value="30">30 sec</option>
+                        <option value="60" selected>1 min</option>
+                        <option value="120">2 min</option>
+                        <option value="300">5 min</option>
+                        <option value="600">10 min</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="category-select">Category:</label>
+                    <select id="category-select">
+                        <option value="plain">Plain (lowercase letters only)</option>
+                        <option value="numbersAndPunctuation">Numbers & Punctuation</option>
+                        <option value="specialCharacters">Special Characters</option>
+                        <option value="quotes">Quotes</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="size-select">Size:</label>
+                    <select id="size-select">
+                        <option value="small">Small</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+
+                <button id="restart-btn" class="btn">↻ New Test</button>
+            </div>
+
+            <section class="results">
+                <h2>Last 5 Results</h2>
+                <div id="results-summary">
+                    <p>No tests completed yet.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Test Complete!</h2>
+            <div class="modal-stats">
+                <p>WPM: <span id="final-wpm">0</span></p>
+                <p>Accuracy: <span id="final-accuracy">0%</span></p>
+                <p>Time: <span id="final-time">0s</span></p>
+            </div>
+            <div class="modal-actions">
+                <button id="modal-restart" class="btn">New Test</button>
+                <button id="modal-close" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="passages.js"></script>
+    <script src="utils.js"></script>
+    <script src="results.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
